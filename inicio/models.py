@@ -1,16 +1,12 @@
 from django.db import models
 
-
-class Video(models.Model):
-    marca = models.CharField(max_length=40)
-    modelo = models.CharField(max_length=40)
-    estado = models.CharField(max_length=40)
-    precio = models.IntegerField()
-    descripcion = models.TimeField()
+class Paleta(models.Model):
+    marca = models.CharField(max_length=30)
+    descripcion = models.TextField()
+    anio = models.IntegerField()
     
     def __str__(self):
-        return f'Id: {self.id} - Marca: {self.marca} - Modelo: {self.anio} - Estado: {self.estado} - Precio: {self.precio} - Descripcion: {self.descripcion}'
-
+        return f'{self.id} - {self.marca} - {self.anio}'
 
 # class Paleta(models.Model):
 #     marca = models.CharField(max_length=30)

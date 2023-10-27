@@ -1,4 +1,4 @@
 from django.contrib import admin
-from inicio.models import Video
+from inicio.models import Paleta
 
-admin.site.register(Video)
+admin.site.register(Paleta)

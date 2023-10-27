@@ -1,48 +1,74 @@
 from django.shortcuts import render, redirect
 # from django.http import HttpResponse
 # from django.template import loader
-from inicio.models import Video, crear_producto
-from inicio.forms import CrearVideoFormulario, BusquedaVideoFormulario
+from inicio.models import Paleta
+from inicio.forms import CrearPaletaFormulario, BusquedaPaletaFormulario
 
-def video(request):
-        return render(request,"inicio/inicio.html")
-
-def inicio(request):    
+def inicio(request):
     
+    # v2
+    # template = loader.get_template('inicio.html')
+    # template_renderizado = template.render({})
+    
+    # return HttpResponse(template_renderizado)
+    
+    # v3
     return render(request, 'inicio/inicio.html', {})
 
-def videos(request):    
+def paletas(request):
     
-    formulario = BusquedaVideoFormulario(request.GET)
+    # v1
+    # marca_a_buscar = request.GET.get('marca')
+    
+    # if marca_a_buscar:
+    #     listado_de_paletas = Paleta.objects.filter(marca__icontains=marca_a_buscar)
+    # else:
+    #     listado_de_paletas = Paleta.objects.all()
+    
+    # v2
+    formulario = BusquedaPaletaFormulario(request.GET)
     if formulario.is_valid():
         marca_a_buscar = formulario.cleaned_data.get('marca')
-        listado_de_videos = video.objects.filter(marca__icontains=marca_a_buscar)
+        listado_de_paletas = Paleta.objects.filter(marca__icontains=marca_a_buscar)
     
-    formulario = BusquedaVideoFormulario()
-    return render(request, 'inicio/video.html', {'formulario': formulario, 'listado_de_videos': listado_de_videos})
+    formulario = BusquedaPaletaFormulario()
+    return render(request, 'inicio/paletas.html', {'formulario': formulario, 'listado_de_paletas': listado_de_paletas})
 
 
-
-def crear_video(request):    
+def crear_paleta(request):
     
+    # v1 (HTML)
+    # # print('==============')
+    # # print('GET')
+    # # print(request.GET)
+    # # print('==============')
+    # # print('POST')
+    # # print(request.POST)
+    
+    # if request.method == 'POST':
+    #     marca = request.POST.get('marca')
+    #     descripcion = request.POST.get('descripcion')
+    #     anio = request.POST.get('anio')
+        
+    #     paleta = Paleta(marca=marca, descripcion=descripcion, anio=anio)
+    #     paleta.save()
+    
+    # v2 (Django Forms)
     if request.method == 'POST':
-        formulario = CrearVideoFormulario(request.POST)
+        formulario = CrearPaletaFormulario(request.POST)
         if formulario.is_valid():
             info_limpia = formulario.cleaned_data
             
             marca = info_limpia.get('marca')
-            modelo = info_limpia.get('modelo')
-            estado = info_limpia.get('estado')
-            precio = info_limpia.get('precio')
             descripcion = info_limpia.get('descripcion')
-            
+            anio = info_limpia.get('anio')
     
-            video = Video(marca=marca.lower(), modelo=modelo, estado=estado, precio=precio, descripcion=descripcion)
-            video.save()
+            paleta = Paleta(marca=marca.lower(), descripcion=descripcion, anio=anio)
+            paleta.save()
             
-            return redirect('videos')
+            return redirect('paletas')
         else:
-            return render(request, 'inicio/crear_producto.html', {'formulario': formulario})
+            return render(request, 'inicio/crear_paleta.html', {'formulario': formulario})
         
-    formulario = CrearVideoFormulario()
-    return render(request, 'inicio/crear_producto.html', {'formulario': formulario})
+    formulario = CrearPaletaFormulario()
+    return render(request, 'inicio/crear_paleta.html', {'formulario': formulario})
