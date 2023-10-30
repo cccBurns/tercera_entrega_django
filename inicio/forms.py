@@ -8,7 +8,9 @@ from django import forms
 #     descripcion = forms.TimeField()
     
 class CrearPaletaFormulario(forms.Form):
+    tipo = forms.CharField(max_length=50)
     marca = forms.CharField(max_length=30)
+    modelo = forms.CharField(max_length=40)
     descripcion = forms.CharField(max_length=250)
     anio = forms.IntegerField()
     

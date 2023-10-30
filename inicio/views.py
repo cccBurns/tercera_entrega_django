@@ -8,8 +8,11 @@ def inicio(request):
    
     return render(request, 'inicio/inicio.html', {})
 
-def monitor(request):
-    return render(request, 'inicio/monitor.html')
+def nosotros(request):
+    return render(request, 'inicio/nosotros.html')
+
+def paletas(request):
+    return render(request, 'inicio/paletas.html')
 
 def paletas(request):    
    

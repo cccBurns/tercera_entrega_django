@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block title_head %}
-<title>Paletas</title>
+<title>Productos</title>
 {% endblock title_head %}
 
 {% block h1_header %}
-Paletas
+Productos
 {% endblock h1_header %}
 
 {% block main %}
@@ -16,14 +16,14 @@ Paletas
     <input type="submit" value="Buscar">
 </form>
 
-{% if listado_de_paletas %}
+{% if listado_de_video %}
 <ul>
-    {% for paleta in listado_de_paletas %}
-    <li>{{paleta}}</li>
+    {% for Video in listado_de_video %}
+    <li>{{video}}</li>
     {% endfor %}
 </ul>
 {% else %}
-<p>No se encontraron paletas.</p>
+<p>No se encontraron Placas de video.</p>
 {% endif %}
 
 {% endblock main %}
