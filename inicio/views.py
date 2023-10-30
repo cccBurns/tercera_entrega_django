@@ -11,10 +11,7 @@ def inicio(request):
 def nosotros(request):
     return render(request, 'inicio/nosotros.html')
 
-def paletas(request):
-    return render(request, 'inicio/paletas.html')
-
-def paletas(request):    
+def productos(request):    
    
     formulario = BusquedaPaletaFormulario(request.GET)
     if formulario.is_valid():
@@ -22,7 +19,7 @@ def paletas(request):
         listado_de_paletas = Paleta.objects.filter(marca__icontains=marca_a_buscar)
     
     formulario = BusquedaPaletaFormulario()
-    return render(request, 'inicio/paletas.html', {'formulario': formulario, 'listado_de_paletas': listado_de_paletas})
+    return render(request, 'inicio/productos.html', {'formulario': formulario, 'listado_de_paletas': listado_de_paletas})
 
 
 def crear_paleta(request):    
