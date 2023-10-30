@@ -16,14 +16,14 @@ Productos
     <input type="submit" value="Buscar">
 </form>
 
-{% if listado_de_video %}
+{% if listado_de_productos %}
 <ul>
-    {% for Video in listado_de_video %}
-    <li>{{video}}</li>
+    {% for producto in listado_de_productos %}
+    <li>{{producto}}</li>
     {% endfor %}
 </ul>
 {% else %}
-<p>No se encontraron Placas de video.</p>
+<p>No se encontraron Productos.</p>
 {% endif %}
 
 {% endblock main %}

@@ -1,4 +1,4 @@
 from django.contrib import admin
-from inicio.models import Paleta
+from inicio.models import Producto
 
-admin.site.register(Paleta)
+admin.site.register(Producto)

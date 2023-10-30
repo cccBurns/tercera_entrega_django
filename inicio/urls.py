@@ -1,9 +1,9 @@
 from django.urls import path
-from inicio.views import inicio, productos, crear_paleta, nosotros
+from inicio.views import inicio, productos, crear_producto, nosotros
 
 urlpatterns = [
     path('', inicio, name='inicio'),
     path('productos/', productos, name='productos'),
-    path('paletas/crear/', crear_paleta, name='crear_paleta'),
+    path('producto/crear/', crear_producto, name='crear_producto'),
     path('nosotros/', nosotros, name='nosotros'),    
 ]

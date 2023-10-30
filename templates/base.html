@@ -36,7 +36,7 @@
                 <a class="navbar-brand" href={% url "inicio" %}>Inicio</a>
                 <a class="navbar-brand" href={% url "productos" %}>Productos</a>
                 <a class="navbar-brand" href={% url "nosotros" %}>Nosotros</a>
-                <a class="navbar-brand" href={% url "crear_paleta" %}>Crear Producto</a>
+                <a class="navbar-brand" href={% url "crear_producto" %}>Crear Producto</a>
                 {% comment %} <a class="btn btn-primary" href="#signup">Sign Up</a> {% endcomment %}
             </div>
         </nav>
@@ -74,11 +74,17 @@
                     >
                         <ul class="list-inline mb-2">
                             <li class="list-inline-item">
-                                <a href="#!">About</a>
+                                <a href="#!">Inicio</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!">Nosotros</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!">Productos</a>
                             </li>
                         </ul>
                         <p class="text-muted small mb-4 mb-lg-0">
-                            &copy; Your Website 2023. All Rights Reserved.
+                            &copy; Tu sitio web 2023. Todos los derechos reservados.
                         </p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
