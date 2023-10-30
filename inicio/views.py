@@ -4,28 +4,15 @@ from django.shortcuts import render, redirect
 from inicio.models import Paleta
 from inicio.forms import CrearPaletaFormulario, BusquedaPaletaFormulario
 
-def inicio(request):
-    
-    # v2
-    # template = loader.get_template('inicio.html')
-    # template_renderizado = template.render({})
-    
-    # return HttpResponse(template_renderizado)
-    
-    # v3
+def inicio(request):    
+   
     return render(request, 'inicio/inicio.html', {})
 
-def paletas(request):
-    
-    # v1
-    # marca_a_buscar = request.GET.get('marca')
-    
-    # if marca_a_buscar:
-    #     listado_de_paletas = Paleta.objects.filter(marca__icontains=marca_a_buscar)
-    # else:
-    #     listado_de_paletas = Paleta.objects.all()
-    
-    # v2
+def monitor(request):
+    return render(request, 'inicio/monitor.html')
+
+def paletas(request):    
+   
     formulario = BusquedaPaletaFormulario(request.GET)
     if formulario.is_valid():
         marca_a_buscar = formulario.cleaned_data.get('marca')
@@ -35,25 +22,8 @@ def paletas(request):
     return render(request, 'inicio/paletas.html', {'formulario': formulario, 'listado_de_paletas': listado_de_paletas})
 
 
-def crear_paleta(request):
+def crear_paleta(request):    
     
-    # v1 (HTML)
-    # # print('==============')
-    # # print('GET')
-    # # print(request.GET)
-    # # print('==============')
-    # # print('POST')
-    # # print(request.POST)
-    
-    # if request.method == 'POST':
-    #     marca = request.POST.get('marca')
-    #     descripcion = request.POST.get('descripcion')
-    #     anio = request.POST.get('anio')
-        
-    #     paleta = Paleta(marca=marca, descripcion=descripcion, anio=anio)
-    #     paleta.save()
-    
-    # v2 (Django Forms)
     if request.method == 'POST':
         formulario = CrearPaletaFormulario(request.POST)
         if formulario.is_valid():
