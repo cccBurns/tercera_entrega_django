@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
-from hardware.models import Video
+from hardware.models import Video, Proce
 from django.urls import reverse_lazy
 
 class ListadoPlacaVideo(ListView):
@@ -14,3 +14,14 @@ class CrearPlacaVideo(CreateView):
     template_name = 'hard/crear_placaVideo.html'
     fields = ['tipo', 'marca', 'descripcion', 'anio']
     success_url = reverse_lazy('placavideo')
+    
+class ListadoProcesador(ListView):
+    model = Proce
+    context_object_name = 'listado_de_procesador'
+    template_name = 'hard/procesador.html'
+
+class CrearProcesador(CreateView):
+    model = Proce
+    template_name = 'hard/crear_procesador.html'
+    fields = ['tipo', 'marca', 'descripcion', 'anio']
+    success_url = reverse_lazy('procesador')
