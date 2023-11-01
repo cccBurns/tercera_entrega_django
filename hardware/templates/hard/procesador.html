@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Procesadores</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Procesadores
+{% endblock h1_header %}
+
+{% block main %}
+<p>
+    <a href={% url "crear_procesador" %}>Crear Procesador</a>
+</p>
+<!--
+    <form action="">
+        {% comment %} <input type="text" name="marca" placeholder="Wilson, Head..."> {% endcomment %}
+        {{formulario}}
+        <input type="submit" value="Buscar">
+    </form>
+-->
+
+{% if listado_de_procesador %}
+<ul>
+    {% for procesador in listado_de_procesador %}
+    <li>{{procesador}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron Procesadores.</p>
+{% endif %}
+
+{% endblock main %}

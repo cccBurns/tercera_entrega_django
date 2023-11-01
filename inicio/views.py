@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 # from django.http import HttpResponse
 # from django.template import loader
-from inicio.models import Producto
-from inicio.forms import CrearProductoFormulario, BusquedaProductoFormulario
+from inicio.models import Monitor
+from inicio.forms import CrearMonitorFormulario, BusquedaMonitorFormulario
 
 def inicio(request):    
    
@@ -11,21 +11,21 @@ def inicio(request):
 def nosotros(request):
     return render(request, 'inicio/nosotros.html')
 
-def productos(request):    
+def monitor(request):    
    
-    formulario = BusquedaProductoFormulario(request.GET)
+    formulario = BusquedaMonitorFormulario(request.GET)
     if formulario.is_valid():
         marca_a_buscar = formulario.cleaned_data.get('marca')
-        listado_de_productos = Producto.objects.filter(marca__icontains=marca_a_buscar)
+        listado_de_monitores = Monitor.objects.filter(marca__icontains=marca_a_buscar)
     
-    formulario = BusquedaProductoFormulario()
-    return render(request, 'inicio/productos.html', {'formulario': formulario, 'listado_de_productos': listado_de_productos})
+    formulario = BusquedaMonitorFormulario()
+    return render(request, 'inicio/monitor.html', {'formulario': formulario, 'listado_de_monitores': listado_de_monitores})
 
 
-def crear_producto(request):    
+def crear_monitor(request):    
     
     if request.method == 'POST':
-        formulario = CrearProductoFormulario(request.POST)
+        formulario = CrearMonitorFormulario(request.POST)
         if formulario.is_valid():
             info_limpia = formulario.cleaned_data
             
@@ -36,12 +36,12 @@ def crear_producto(request):
             anio = info_limpia.get('anio') 
             
     
-            producto = Producto(marca=marca.lower(), descripcion=descripcion, anio=anio)
-            producto.save()
+            monitor = Monitor(marca=marca.lower(), descripcion=descripcion, anio=anio)
+            monitor.save()
             
-            return redirect('/productos')
+            return redirect('/monitor')
         else:
-            return render(request, 'inicio/crear_producto.html', {'formulario': formulario})
+            return render(request, 'inicio/crear_monitor.html', {'formulario': formulario})
         
-    formulario = CrearProductoFormulario()
-    return render(request, 'inicio/crear_producto.html', {'formulario': formulario})
+    formulario = CrearMonitorFormulario()
+    return render(request, 'inicio/crear_monitor.html', {'formulario': formulario})

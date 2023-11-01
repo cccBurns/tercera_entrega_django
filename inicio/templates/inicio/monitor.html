@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Monitores</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Monitores
+{% endblock h1_header %}
+
+{% block main %}
+<p>
+    <a href={% url "crear_monitor" %}>Crear Monitor</a>
+</p>
+
+<!--
+    <form action="">
+        {% comment %} <input type="text" name="marca" placeholder="Wilson, Head..."> {% endcomment %}
+        {{formulario}}
+        <input type="submit" value="Buscar">
+    </form>
+-->
+
+{% if listado_de_monitores %}
+<ul>
+    {% for monitor in listado_de_monitores %}
+    <li>{{monitor}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron Monitores.</p>
+{% endif %}
+
+{% endblock main %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Placas de video</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Placas de video
+{% endblock h1_header %}
+
+{% block main %}
+<p>
+    <a href={% url "crear_placavideo" %}>Crear Placa de video</a>
+</p>
+<!--
+    <form action="">
+        {% comment %} <input type="text" name="marca" placeholder="Wilson, Head..."> {% endcomment %}
+        {{formulario}}
+        <input type="submit" value="Buscar">
+    </form>
+-->
+
+{% if listado_de_placaVideo %}
+<ul>
+    {% for placavideo in listado_de_placaVideo %}
+    <li>{{placavideo}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron Placas de video.</p>
+{% endif %}
+
+{% endblock main %}

@@ -1,4 +1,4 @@
 from django.contrib import admin
-from inicio.models import Producto
+from inicio.models import Monitor
 
-admin.site.register(Producto)
+admin.site.register(Monitor)
