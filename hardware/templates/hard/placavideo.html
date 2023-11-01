@@ -9,16 +9,16 @@ Placas de video
 {% endblock h1_header %}
 
 {% block main %}
-<p>
+<h3>
     <a href={% url "crear_placavideo" %}>Crear Placa de video</a>
-</p>
-<!--
+</h3>
+
     <form action="">
         {% comment %} <input type="text" name="marca" placeholder="Wilson, Head..."> {% endcomment %}
         {{formulario}}
         <input type="submit" value="Buscar">
     </form>
--->
+
 
 {% if listado_de_placaVideo %}
 <ul>
