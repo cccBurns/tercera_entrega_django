@@ -31,7 +31,7 @@
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-light bg-light static-top">
+        <nav class="navbar navbar-dark bg-dark static-top">
             <div class="container">
                 <a class="navbar-brand" href={% url "inicio" %}>Inicio</a>
                 <a class="navbar-brand" href={% url "nosotros" %}>Nosotros</a>                
@@ -98,21 +98,21 @@
         <section class="showcase">
             <div class="container-fluid p-0">
                 <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('static/assets/img/bg-showcase-1.jpg')"></div>
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('static/assets/img/bg-showcase-3.jpg')"></div>
                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                         <h2>Nvidia / AMD</h2>
                         <p class="lead mb-0">Las mejores placas de video para tu pc gamer!</p>
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('static/assets/img/bg-showcase-2.jpg')"></div>
+                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('static/assets/img/bg-showcase.jpg')"></div>
                     <div class="col-lg-6 my-auto showcase-text">
                         <h2>Intel / AMD</h2>
                         <p class="lead mb-0">Contamos con los procesadores mas potentes del mercado</p>
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('static/assets/img/bg-showcase-3.jpg')"></div>
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('static/assets/img/bg-showcase-1.jpg')"></div>
                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                         <h2>Monitores Gamer</h2>
                         <p class="lead mb-0">Los monitores games mas inmersivo, oled y con la tasa de refresco mas alta.</p>
@@ -131,14 +131,18 @@
                     >
                         <ul class="list-inline mb-2">
                             <li class="list-inline-item">
-                                <a href="#!">Inicio</a>
+                                <a href="inicio">Inicio</a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!">Nosotros</a>
+                                <a href="nosotros">Nosotros</a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!">Productos</a>
+                                <a href="hardware/placavideo">Placas de video</a>
                             </li>
+                            <li class="list-inline-item">
+                                <a href="monitor">monitores</a>
+                            </li>
+                            
                         </ul>
                         <p class="text-muted small mb-4 mb-lg-0">
                             &copy; HardGamer 2023. Todos los derechos reservados.
