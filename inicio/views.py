@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 # from django.http import HttpResponse
 # from django.template import loader
 from inicio.models import Monitor
-from inicio.forms import CrearMonitorFormulario, BusquedaMonitorFormulario
+from inicio.forms import CrearMonitorFormulario, BusquedaMonitorFormulario, ActualizarMonitorFormulario
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):    
    
@@ -21,7 +22,7 @@ def monitor(request):
     formulario = BusquedaMonitorFormulario()
     return render(request, 'inicio/monitor.html', {'formulario': formulario, 'listado_de_monitores': listado_de_monitores})
 
-
+@login_required
 def crear_monitor(request):    
     
     if request.method == 'POST':
@@ -45,3 +46,35 @@ def crear_monitor(request):
         
     formulario = CrearMonitorFormulario()
     return render(request, 'inicio/crear_monitor.html', {'formulario': formulario})
+
+@login_required
+def eliminar_monitor(request, monitor_id):
+    monitor_a_eliminar = monitor.objects.get(id=monitor_id)
+    monitor_a_eliminar.delete()
+    return redirect("monitores")
+
+@login_required
+def actualizar_monitor(request, monitor_id):
+    monitor_a_actualizar = monitor.objects.get(id=monitor_id)
+    
+    if request.method == "POST":
+        formulario = ActualizarMonitorFormulario(request.POST)
+        if formulario.is_valid():
+            info_nueva = formulario.cleaned_data
+            
+            monitor_a_actualizar.marca = info_nueva.get('marca')
+            monitor_a_actualizar.descripcion = info_nueva.get('descripcion')
+            monitor_a_actualizar.anio = info_nueva.get('anio')
+            
+            monitor_a_actualizar.save()
+            return redirect('monitores')
+        else:
+            return render(request, 'inicio/actualizar_monitor.html', {'formaulario': formulario})
+    
+    
+    formulario = ActualizarMonitorFormulario(initial={'marca': monitor_a_actualizar.marca, 'descripcion': monitor_a_actualizar.descripcion,'anio': monitor_a_actualizar.anio})
+    return render(request, 'inicio/actualizar_monitor.html', {'formulario': formulario})
+
+def detalle_monitor(request, monitor_id):
+    monitor = Monitor.objects.get(id=monitor_id)
+    return render(request, 'inicio/detalle_monitor.html', {'monitor': monitor})

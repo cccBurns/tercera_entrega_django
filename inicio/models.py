@@ -1,14 +1,13 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class Monitor(models.Model):
-    tipo = models.CharField(max_length=50)
     marca = models.CharField(max_length=30)
-    modelo = models.CharField(max_length=100, default='TuValorModeloPredeterminado')
-    descripcion = models.CharField(max_length=250)
-    anio = models.IntegerField()    
+    descripcion = RichTextField()
+    anio = models.IntegerField()   
     
     def __str__(self):
-        return f'{self.tipo} - {self.marca} - {self.modelo} - {self.descripcion} - {self.anio}'
+        return f'{self.id} - {self.marca} - {self.anio}'
 
 # class PlacaVideo(models.Model):
 #     marca = models.CharField(max_length=30)
